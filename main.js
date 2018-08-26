@@ -1,25 +1,27 @@
 var execute = function() {
-    subscribeform = document.getElementById("subscribeForm");
-    subscribeform.addEventListener("submit", submitsubscribe);
+    //apiform = document.getElementById("apiform");
+    infoload();
     // Handler when the DOM is fully loaded
-
-    //hoisting variables
-    var user;
-    var signupform;
-
-    if(localStorage.hasOwnProperty("useremail") && localStorage.hasOwnProperty("userpoliticalleaning")){
-    	console.log(`On refresh, your name is still ${localStorage.useremail} and you lean ${localStorage.userpoliticalleaning}!`);
-    }
+    //console.log('executed');
 };
 
-function submitsubscribe(event) {
+function infoload() {
     event.preventDefault();
-    console.log("Yay");
-    var useremail = this.emailaddress.value;
-    var userpoliticalleaning = this.politicalleaning.value;
-    localStorage.setItem("useremail", useremail);
-    localStorage.setItem("userpoliticalleaning",userpoliticalleaning);
-    alert(`Welcome to The Flip Side, ${useremail}!`);
+    //console.log('started tag function');
+    //set variables
+    var fqtag = document.createElement("script");
+    let p = window.location.href;
+    let a = navigator.userAgent;
+    let cmp = "Christian";
+    let fqurl = `//c.fqtag.com/tag/implement-r.js?org=BB6DvPmytpFndg8atDcN&p=${p}&a=${a}&cmp=${cmp}&fmt=banner&rt=display&sl=1&fq=1`;
+    //confirm url is set
+    console.log(fqurl);
+    fqtag.src = fqurl;
+    fqtag.async = true;
+    fqtag.type = "text/javascript";
+    fqtag.id = "fqtag";
+    //append script, firing tag
+    document.head.appendChild(fqtag);
     return false;
 }
 
